@@ -1,0 +1,229 @@
+/* Warna SMPK Lawang: biru tua, biru muda, merah, oranye */
+:root {
+    --biru-tua: #12376e;
+    --biru-muda: #4f8edc;
+    --merah: #e53935;
+    --oranye: #ffb300;
+    --sidebar-bg: var(--biru-tua);
+    --sidebar-active: var(--biru-muda);
+    --sidebar-text: #fff;
+    --main-bg: #f7f9fa;
+}
+/* Base Styles */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: var(--main-bg);
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Make buttons and links more touch-friendly */
+a, button, .btn, input[type="submit"], input[type="button"] {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Prevent text from being selectable on mobile */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow text selection in content areas */
+p, h1, h2, h3, h4, h5, h6, span, div, td, th, li, a, input, textarea, select, button {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+body::before {
+    content: '';
+    background-image: url('../../assets/logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%;
+    background-attachment: fixed;
+    opacity: 0.4; /* 40% opacity */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+    transform: translateZ(0); /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden; /* Fix for some rendering issues */
+    backface-visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.8); /* Slight white overlay */
+    background-blend-mode: overlay;
+}
+.sidebar {
+    width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+/* Sidebar header and logo */
+.sidebar-header {
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+    max-width: 120px;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.sidebar .logo {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: var(--oranye);
+    margin: 0;
+    padding: 0 16px;
+    text-align: center;
+}
+
+/* Adjust logo size for smaller screens */
+@media (max-width: 768px) {
+    .sidebar-logo {
+        max-width: 100px;
+    }
+    
+    .sidebar .logo {
+        font-size: 1.1em;
+    }
+}
+.sidebar a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    padding: 14px 24px;
+    display: block;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    position: relative;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+.sidebar a.active, .sidebar a:hover {
+    background: var(--sidebar-active);
+    color: var(--oranye);
+    padding-left: 28px;
+    border-left: 4px solid var(--oranye);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+    
+    .dashboard-welcome {
+        font-size: 1.5rem;
+        margin: 1rem 0 0.5rem;
+    }
+    
+    /* Improve form elements for touch */
+    input, select, textarea, button, .btn {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        min-height: 44px; /* Minimum touch target size */
+    }
+    
+    /* Ensure tables are scrollable on mobile */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Adjust padding for mobile */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Larger touch targets for mobile */
+@media (max-width: 480px) {
+    .btn, button, a.btn {
+        padding: 12px 20px;
+        margin: 5px 0;
+    }
+    
+    /* Make sure form elements are easy to tap */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="time"],
+    select, textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+    }
+    
+    /* Make sure tables are readable on small screens */
+    table {
+        font-size: 0.9em;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+}
+.sidebar .bottom {
+    margin-top: auto;
+    padding: 16px;
+    font-size: 0.9em;
+    color: var(--merah);
+}
+.main {
+    margin-left: 250px;
+    padding: 32px 24px;
+    transition: margin 0.3s ease;
+}
+.btn {
+    background: var(--biru-muda);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn:hover {
+    background: var(--biru-tua);
+}
+input, select, textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 12px;
+}
